@@ -3,6 +3,8 @@ package it.polito.tdp.parole;
 import it.polito.tdp.parole.model.Parole;
 
 import java.net.URL;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +14,9 @@ import javafx.scene.control.TextField;
 
 public class FXMLController {
 	
+	//elenco delle parole
 	Parole elenco ;
+	List<String> elencoOrdinato=new LinkedList<String>();
 
     @FXML
     private ResourceBundle resources;
@@ -34,12 +38,30 @@ public class FXMLController {
 
     @FXML
     void doInsert(ActionEvent event) {
-    	// TODO
+    	//bottone inserisci in cui dobbiamo inserire nell'area di testo l'elenco di parole in ordine alfabetico
+    	txtResult.clear();
+    	String inserita=txtParola.getText();
+    	if(inserita.length()==0) {
+    		System.out.println("\nPAROLA VUOTA, DUNQUE NON INSERITA!");
+    	}
+    	else {
+    		elenco.addParola(inserita);
+    	}
+    	String stampa="";
+    	elencoOrdinato=elenco.getElenco();
+    	for(String i: elencoOrdinato) {
+    		stampa=stampa+"\n"+i;
+    	}
+    	txtResult.appendText(stampa);
+    	
+    	
     }
 
     @FXML
     void doReset(ActionEvent event) {
     	// TODO
+    	txtResult.clear();
+    	elenco.reset();
     }
 
     @FXML
