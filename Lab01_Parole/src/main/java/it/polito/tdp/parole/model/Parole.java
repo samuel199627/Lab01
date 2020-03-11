@@ -31,5 +31,24 @@ public class Parole {
 		return ritorna;
 	}
 	*/
+	
+	public void deleteWord(String selected) {
+		
+		System.out.println("Parola da cancellare: "+selected);
+		/*
+		for(String i:this.elenco) {
+			if(i.equals(selected)) {
+				this.elenco.remove(i);
+			}
+		}
+		*/
+		for(int i=0; i<this.elenco.size();i++) {
+			if(this.elenco.get(i).equals(selected)) {
+				//System.out.println("Ciao!\n");
+				elenco.remove(i);
+				return ;
+			}
+		}
+	}
 
 }
